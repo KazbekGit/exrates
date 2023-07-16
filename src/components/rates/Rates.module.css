@@ -1,0 +1,84 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    background-color: red;
+}
+
+.form {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.swap {
+    position: absolute;
+    top: calc(50% - 20px);
+    right: -50px;
+    fill: teal;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+    border-radius: 4px;
+}
+
+.swap:hover {
+    fill: tomato;
+}
+.swap:active {
+    transform: translateY(1px)
+}
+
+input {
+    width: 150px;
+    min-height: 40px;
+
+    margin-right: 4px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    border: 1px solid teal;
+    border-radius: 4px;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12pt;
+    font-weight: 700;
+
+    color: teal;
+}
+
+select {
+    margin: 0;
+    padding: 0;
+    min-width: 70px;
+    min-height: 40px;
+
+    padding: 10px;
+    padding-right: 20px;
+
+    border: 1px solid teal;
+    border-radius: 4px;
+
+    text-align: center;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 12pt;
+
+    color: white;
+    background-color: teal;
+
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+select:hover {
+    background-color: rgb(1, 84, 84);
+}
+select:active {
+    transform: translateY(1px);
+}
+
+option {
+    background-color: tomato;
+}
