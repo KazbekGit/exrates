@@ -1,20 +1,32 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import data from "../../data/data.json";
 
-const RateItem = ({ rates, selectName }) => {
-  const [value, setValue] = useState(0);
-  const [selectValue, setSelectValue] = useState(rates[0][1]);
+const RateItem = ({ rates, name, defaultCurrency }) => {
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    if (rates) setValue(() => rates[defaultCurrency] || "");
+  }, [rates]);
+
+  const [currency, setCurrency] = useState(defaultCurrency);
+
+  const currencyList = Object.keys(rates);
+
+  const onValueChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  const onCurrencyChange = (e) => {
+    setCurrency(e.target.value);
+    setValue(rates[e.target.value]);
+  };
+
   return (
     <div>
-      <input value={selectValue} type="text" title="input value" />
-      <select name={selectName} value={selectValue} onChange={(evt) => {setSelectValue(evt.target.value)}}>
-        {rates.map((rate, index) => {
-          let name = rate[0];
-          let value = rate[1];
-          return (
-            <option key={index} value={value}>
-              {name}
-            </option>
-          );
+      <input type="number" value={value} onChange={onValueChange} />
+      <select name={name} value={currency} onChange={onCurrencyChange}>
+        {currencyList.map((currency, index) => {
+          return <option key={index}>{currency}</option>;
         })}
       </select>
     </div>
